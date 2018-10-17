@@ -54,12 +54,45 @@ class logs:
 	def log(self,text,tags:list=[]):
 		time_now =  self.BRACKETS[0]+str(datetime.now())+self.BRACKETS[1]
 		prefix = ""
-		prefix += time_now
+		prefix += (time_now+self.BRACKETS[0]+"LOG"+self.BRACKETS[1])
 		for item in tags:
 			prefix += self.BRACKETS[0]+item+self.BRACKETS[1]
 		output_text = prefix + text + "\n"
 		sys.stdout.write(output_text)
-		filename = self.FILENAME[0] + self.count + self.FILENAME[1]
+		filename = self.FILENAME[0] + str(self.count) + self.FILENAME[1]
+		with open(self.FILEINFO[0]+"\\logs\\"+filename,self.WRITEMODE["mode"],encoding=self.WRITEMODE["encoding"]) as w:
+			w.write(output_text)
+	def log_error(self,text,tags:list=[]):
+		time_now =  self.BRACKETS[0]+str(datetime.now())+self.BRACKETS[1]
+		prefix = ""
+		prefix += (time_now+self.BRACKETS[0]+"ERROR"+self.BRACKETS[1])
+		for item in tags:
+			prefix += self.BRACKETS[0]+item+self.BRACKETS[1]
+		output_text = prefix + text + "\n"
+		sys.stdout.write(output_text)
+		filename = self.FILENAME[0] + str(self.count) + self.FILENAME[1]
+		with open(self.FILEINFO[0]+"\\logs\\"+filename,self.WRITEMODE["mode"],encoding=self.WRITEMODE["encoding"]) as w:
+			w.write(output_text)
+	def log_warn(self,text,tags:list=[]):
+		time_now =  self.BRACKETS[0]+str(datetime.now())+self.BRACKETS[1]
+		prefix = ""
+		prefix += (time_now+self.BRACKETS[0]+"WARN"+self.BRACKETS[1])
+		for item in tags:
+			prefix += self.BRACKETS[0]+item+self.BRACKETS[1]
+		output_text = prefix + text + "\n"
+		sys.stdout.write(output_text)
+		filename = self.FILENAME[0] + str(self.count) + self.FILENAME[1]
+		with open(self.FILEINFO[0]+"\\logs\\"+filename,self.WRITEMODE["mode"],encoding=self.WRITEMODE["encoding"]) as w:
+			w.write(output_text)
+	def log_event(self,text,tags:list=[]):
+		time_now =  self.BRACKETS[0]+str(datetime.now())+self.BRACKETS[1]
+		prefix = ""
+		prefix += (time_now+self.BRACKETS[0]+"EVENT"+self.BRACKETS[1])
+		for item in tags:
+			prefix += self.BRACKETS[0]+item+self.BRACKETS[1]
+		output_text = prefix + text + "\n"
+		sys.stdout.write(output_text)
+		filename = self.FILENAME[0] + str(self.count) + self.FILENAME[1]
 		with open(self.FILEINFO[0]+"\\logs\\"+filename,self.WRITEMODE["mode"],encoding=self.WRITEMODE["encoding"]) as w:
 			w.write(output_text)
 if __name__ == "__main__":
